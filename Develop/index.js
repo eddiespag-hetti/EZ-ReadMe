@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const fs = require('fs');
+const { writeFile } = require('fs').promises;
 
 
 console.log('test'); // Testing if node is running
@@ -57,10 +57,8 @@ const promptUser = () => {
 ]);
 };
 
-
-    
 // TODO: Create a function to write README file
-function writeToFile({ project, description, installation, usage, test, license, username, email }) => 
+const writeToFile = ({ project, description, installation, usage, test, license, username, email }) => 
 `
 ${project}
 ${description}
@@ -70,20 +68,26 @@ ${test}
 ${license}
 ${username}
 ${email}
-
-
 `
 
-// TODO: Create a function to initialize app
-const init () => {
-    promptUser()
-    
-    .then((answers) => writeFile('README.md', writeToFile(answers)))
-    .then(() => console.log('Successfully wrote to README.md'))
-    .catch((err) => console.error(err));
-};
 
-init();
+
+        
+const init = () => {
+    promptUser()
+      // Use writeFile method imported from fs.promises to use promises instead of
+      // a callback function
+      .then((answers) => writeFile('README.md', writeToFile(answers)))
+      .then(() => console.log('Successfully wrote to README.md'))
+      .catch((err) => console.error(err));
+  };
+  
+  init();
+
+
+
+
+
 
 
 
