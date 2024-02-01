@@ -60,14 +60,28 @@ const promptUser = () => {
 // TODO: Create a function to write README file
 const writeToFile = ({ project, description, installation, usage, test, license, username, email }) => 
 `
-${project}
-${description}
-${installation}
-${usage}
-${test}
-${license}
-${username}
-${email}
+## ${project}
+
+
+## ${description}
+
+
+## ${installation}
+
+
+##${usage}
+
+
+##${test}
+
+
+##${license}
+
+
+##${username}
+
+
+##${email}
 `
 
 
@@ -75,8 +89,7 @@ ${email}
         
 const init = () => {
     promptUser()
-      // Use writeFile method imported from fs.promises to use promises instead of
-      // a callback function
+
       .then((answers) => writeFile('README.md', writeToFile(answers)))
       .then(() => console.log('Successfully wrote to README.md'))
       .catch((err) => console.error(err));
