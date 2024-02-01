@@ -9,10 +9,11 @@ console.log('test'); // Testing if node is running
 // 
 
 // TODO: Create an array of questions for user input
-const questions = inquirer.prompt([
+const promptUser = () => {
+    return inquirer.prompt([
     {
         type: 'input',
-        name: 'project-name',
+        name: 'project',
         message: 'What is the name of your project?',
     },
     {
@@ -52,23 +53,38 @@ const questions = inquirer.prompt([
         type: 'input',
         name: 'email',
         message: 'What is your email?',
-    }
-])
-.then((answers) => {
-    console.log(answers); // Why does this log the choices array as an empty array?
-})
+    },
+]);
+};
 
 
-
-       
-
-
+    
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile({ project, description, installation, usage, test, license, username, email }) => 
+`
+${project}
+${description}
+${installation}
+${usage}
+${test}
+${license}
+${username}
+${email}
+
+
+`
 
 // TODO: Create a function to initialize app
-function init() {}
+const init () => {
+    promptUser()
+    
+    .then((answers) => writeFile('README.md', writeToFile(answers)))
+    .then(() => console.log('Successfully wrote to README.md'))
+    .catch((err) => console.error(err));
+};
 
-// Function call to initialize app
 init();
+
+
+
 
