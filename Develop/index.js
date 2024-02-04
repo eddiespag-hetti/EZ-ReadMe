@@ -1,12 +1,20 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const { writeFile } = require('fs').promises;
+const generateMarkdown = require('./utils/generateMarkdown');
 
 
-console.log('test'); // Testing if node is running
 // Answers Required - 
 // What is the name of your project?
-// 
+// Description of project
+// How to install
+// Intended use
+// How can we test?
+// Which license?
+// GH Username?
+// Email?
+
+
 
 // TODO: Create an array of questions for user input
 const promptUser = () => {
@@ -37,11 +45,11 @@ const promptUser = () => {
         message: 'How can your application be tested?',
     },
     {
-        type: 'checkbox',
+        type: 'list',
         name: 'license',
         message: 'What license is associated with this repository?',
         choices: [
-            'Apache 2.0', 'MIT', 'GNU', 'BSD 2', 'The Unlicense'
+            'Apache_2.0', 'MIT', 'GNU', 'BSD_2', 'The_Unlicense'
         ],
     },
     {
@@ -57,40 +65,16 @@ const promptUser = () => {
 ]);
 };
 
-// TODO: Create a function to write README file
-const writeToFile = ({ project, description, installation, usage, test, license, username, email }) => 
-`
-## ${project}
-
-
-## ${description}
-
-
-## ${installation}
-
-
-##${usage}
-
-
-##${test}
-
-
-##${license}
-
-
-##${username}
-
-
-##${email}
-`
 
 
 
-        
+
+
+        // Function to initialize 
 const init = () => {
     promptUser()
 
-      .then((answers) => writeFile('README.md', writeToFile(answers)))
+      .then((answers) => writeFile('README.md', generateMarkdown(answers)))
       .then(() => console.log('Successfully wrote to README.md'))
       .catch((err) => console.error(err));
   };
