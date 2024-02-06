@@ -75,6 +75,8 @@ promptUser()
 .catch((err) => console.error(err));
 };
 
+
+// Calling the init() function
 init();
 
 
