@@ -1,4 +1,4 @@
-// TODO: Include packages needed for this application
+// Loading in required libraries as well as linked Js file
 const inquirer = require('inquirer');
 const { writeFile } = require('fs').promises;
 const generateMarkdown = require('./utils/generateMarkdown');
@@ -16,7 +16,7 @@ const generateMarkdown = require('./utils/generateMarkdown');
 
 
 
-// TODO: Create an array of questions for user input
+// Array of questions
 const promptUser = () => {
     return inquirer.prompt([
     {
@@ -66,20 +66,20 @@ const promptUser = () => {
 };
 
 
-
-
-
-
-        // Function to initialize 
+// Function to initialize 
 const init = () => {
-    promptUser()
+promptUser()
 
-      .then((answers) => writeFile('README.md', generateMarkdown(answers)))
-      .then(() => console.log('Successfully wrote to README.md'))
-      .catch((err) => console.error(err));
-  };
-  
-  init();
+.then((answers) => writeFile('README.md', generateMarkdown(answers)))
+.then(() => console.log('Successfully wrote to README.md'))
+.catch((err) => console.error(err));
+};
+
+init();
+
+
+
+
 
 
 
