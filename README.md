@@ -25,6 +25,9 @@ To install this application on your machine all you need to do is have Node.js i
 In the intergrated terminal and run 'npm install'. 
 Once the application is installed. Run 'index.js' in the terminal to begin the quick and easy process of generating a README.md.
 
+
+- Video walkthrough: https://drive.google.com/file/d/1nKgR7X-UEs7ZVMzhamiw3CnQ1xEb9MCj/view
+
 ## Usage 
 
 This application is desgined with busy, time concious Developers in mind. 
